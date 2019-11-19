@@ -56,7 +56,7 @@ class   HomeController extends AbstractController
         $em->remove($musique);
         $em->flush();
 
-        return $this->redirectToRoute("phhome");
+        return $this->redirectToRoute("home");
 
     }
 }
