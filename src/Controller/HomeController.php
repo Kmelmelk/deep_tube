@@ -11,22 +11,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class   HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/", name="home")
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
-        $repo = $em->getRepository(Musique::class);
-        $musiques = $repo->findAll();
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'DeepTube',
-            'musiques' => $musiques
+
         ]);
     }
 
     /**
-     * @Route("/home/ajout", name="home_add")
+     * @Route("/ajout", name="home_add")
      */
     public function home_add(Request $request)
     {
@@ -38,7 +35,7 @@ class   HomeController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($musique);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('single');
         }
 
         return $this->render('home/ajout.musique.html.twig' , ['form' => $form->createView()]);
@@ -56,7 +53,7 @@ class   HomeController extends AbstractController
         $em->remove($musique);
         $em->flush();
 
-        return $this->redirectToRoute("home");
+        return $this->redirectToRoute("single");
 
     }
 }

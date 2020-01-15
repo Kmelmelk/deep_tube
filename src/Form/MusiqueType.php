@@ -14,6 +14,8 @@ class MusiqueType extends AbstractType
     {
         $builder
             ->add('url')
+            ->add('auteur')
+            ->add('titre')
             ->add('valider',SubmitType::class)
         ;
     }

@@ -21,6 +21,16 @@ class Musique
      */
     private $url;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Titre;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Auteur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +44,30 @@ class Musique
     public function setUrl(string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    public function getTitre(): ?string
+    {
+        return $this->Titre;
+    }
+
+    public function setTitre(string $Titre): self
+    {
+        $this->Titre = $Titre;
+
+        return $this;
+    }
+
+    public function getAuteur(): ?string
+    {
+        return $this->Auteur;
+    }
+
+    public function setAuteur(string $Auteur): self
+    {
+        $this->Auteur = $Auteur;
 
         return $this;
     }
